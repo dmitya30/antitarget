@@ -160,3 +160,21 @@ strong, b { font-weight: var(--fw-semibold); }
 .stack > * + * { margin-top: var(--sp-4); }   /* вертикальный ритм внутри блока */
 .center { text-align: center; }
 .nowrap { white-space: nowrap; }
+
+/* ---------- ТЕКСТОВЫЕ СТРАНИЦЫ (legal, заглушки) ---------- */
+.doc { padding-block: var(--section-y); }
+.doc .container { max-width: 50rem; }
+.doc h1 { font-size: var(--fs-h2); margin-bottom: var(--sp-2); }
+.doc .doc-date { color: var(--c-ink-muted); font-size: var(--fs-small); margin-bottom: var(--sp-6); }
+.doc h2 { font-size: var(--fs-h3); margin-top: var(--sp-6); margin-bottom: var(--sp-3); }
+.doc p, .doc li { color: var(--c-ink-soft); margin-bottom: var(--sp-3); }
+.doc ul { list-style: disc; padding-left: var(--sp-5); margin-bottom: var(--sp-4); }
+.doc li { margin-bottom: var(--sp-2); }
+.doc a { color: var(--c-accent); text-decoration: underline; text-underline-offset: 2px; }
+.doc-back { display: inline-block; margin-top: var(--sp-7); font-size: var(--fs-small); }
+
+/* Простая шапка для внутренних страниц */
+.simple-header { border-bottom: 1px solid var(--c-line); }
+.simple-header .container { display: flex; align-items: center; min-height: 60px; }
+.simple-header__logo { display: inline-flex; align-items: center; gap: var(--sp-2); font-weight: var(--fw-bold); }
+.simple-header__logo img { height: 1.5rem; width: auto; }
