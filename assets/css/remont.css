@@ -19,7 +19,8 @@
   color: var(--c-ink);
 }
 .site-header__wordmark::first-letter,
-.site-header__logo { color: var(--c-ink); }
+.site-header__logo { display: inline-flex; align-items: center; gap: var(--sp-2); }
+.site-header__logo-img { height: 1.6rem; width: auto; display: block; }
 
 /* CTA в шапке виден ВЕЗДЕ; текст переключается по ширине */
 .site-header__cta { display: inline-flex; }
@@ -92,3 +93,136 @@
 .sticky-cta.is-visible { transform: translateY(0); }
 /* На десктопе липкая кнопка не нужна - есть CTA в шапке и по тексту */
 @media (min-width: 48rem) { .sticky-cta { display: none; } }
+
+/* ============================================================
+   СЕКЦИИ 6.2–6.9 + футер
+   ============================================================ */
+
+/* Сетка карточек (общая) */
+.pain-grid, .benefits-grid, .guarantees-grid {
+  display: grid; gap: var(--sp-4);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 40rem) {
+  .pain-grid, .benefits-grid { grid-template-columns: 1fr 1fr; }
+  .guarantees-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 60rem) {
+  .benefits-grid { grid-template-columns: repeat(4, 1fr); }
+  .guarantees-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* 6.2 Боль — карточки */
+.pain-card {
+  background: var(--c-bg); border: 1px solid var(--c-line);
+  border-radius: var(--radius); padding: var(--sp-5);
+  font-size: var(--fs-body); color: var(--c-ink-soft);
+  border-left: 3px solid var(--c-accent);
+}
+
+/* 6.3 Механика — нумерованный поток */
+.flow { display: grid; gap: var(--sp-5); }
+@media (min-width: 48rem) { .flow { grid-template-columns: 1fr 1fr; gap: var(--sp-6); } }
+.flow-step { display: flex; gap: var(--sp-4); align-items: flex-start; }
+.flow-num {
+  flex: 0 0 auto; width: 2.5rem; height: 2.5rem;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--c-accent-soft); color: var(--c-accent);
+  border-radius: var(--radius-pill); font-weight: var(--fw-bold); font-size: 1.1rem;
+}
+.flow-step h3 { margin-bottom: var(--sp-1); }
+.flow-step p { color: var(--c-ink-soft); font-size: var(--fs-small); }
+
+/* 6.4 Выгоды */
+.benefit-card {
+  background: var(--c-bg); border: 1px solid var(--c-line);
+  border-radius: var(--radius); padding: var(--sp-5);
+}
+.benefit-card h3 { margin-bottom: var(--sp-2); font-size: var(--fs-h3); }
+.benefit-card p { color: var(--c-ink-soft); font-size: var(--fs-small); }
+
+/* 6.5 Цифры */
+.stats-grid {
+  display: grid; gap: var(--sp-4); grid-template-columns: 1fr;
+  margin-bottom: var(--sp-5);
+}
+@media (min-width: 48rem) { .stats-grid { grid-template-columns: repeat(3, 1fr); } }
+.stat-card {
+  text-align: center; padding: var(--sp-6) var(--sp-4);
+  background: var(--c-bg-soft); border-radius: var(--radius-lg);
+}
+.stat-num {
+  display: block; font-size: clamp(2rem, 6vw, 2.8rem);
+  font-weight: var(--fw-bold); color: var(--c-accent); line-height: 1.1;
+  margin-bottom: var(--sp-2);
+}
+.stat-card p { color: var(--c-ink-soft); font-size: var(--fs-small); }
+.stats-source { text-align: center; }
+
+/* 6.6 Как работаем — шаги */
+.steps { counter-reset: step; display: grid; gap: var(--sp-4); }
+@media (min-width: 48rem) { .steps { grid-template-columns: repeat(4, 1fr); } }
+.step-item {
+  position: relative; padding: var(--sp-5);
+  background: var(--c-bg); border: 1px solid var(--c-line); border-radius: var(--radius);
+  counter-increment: step;
+}
+.step-item::before {
+  content: counter(step); display: block;
+  font-size: 1.4rem; font-weight: var(--fw-bold); color: var(--c-accent);
+  margin-bottom: var(--sp-2);
+}
+.step-item h3 { margin-bottom: var(--sp-1); font-size: var(--fs-h3); }
+.step-item p { color: var(--c-ink-soft); font-size: var(--fs-small); }
+
+/* 6.7 Гарантии */
+.guarantee-card {
+  background: var(--c-bg); border: 1px solid var(--c-line);
+  border-radius: var(--radius); padding: var(--sp-5) var(--sp-5) var(--sp-5) var(--sp-8);
+  position: relative; color: var(--c-ink-soft); font-size: var(--fs-small);
+}
+.guarantee-card::before {
+  content: "✓"; position: absolute; left: var(--sp-5); top: var(--sp-5);
+  color: var(--c-trust); font-weight: var(--fw-bold); font-size: 1.2rem;
+}
+
+/* 6.8 FAQ — аккордеон (details/summary, без JS) */
+.faq { display: grid; gap: var(--sp-3); }
+.faq-item {
+  background: var(--c-bg); border: 1px solid var(--c-line);
+  border-radius: var(--radius); overflow: hidden;
+}
+.faq-item summary {
+  cursor: pointer; padding: var(--sp-4) var(--sp-5);
+  font-weight: var(--fw-semibold); font-size: var(--fs-body);
+  list-style: none; display: flex; justify-content: space-between; align-items: center; gap: var(--sp-4);
+  min-height: var(--tap-min);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "+"; color: var(--c-accent); font-size: 1.4rem; font-weight: var(--fw-bold);
+  transition: transform var(--transition); flex: 0 0 auto;
+}
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-body { padding: 0 var(--sp-5) var(--sp-5); }
+.faq-body p { color: var(--c-ink-soft); font-size: var(--fs-small); }
+
+/* 6.9 Финальный CTA (на тёмном) */
+#final-cta .final-cta__lead {
+  max-width: 40rem; margin: var(--sp-4) auto var(--sp-6);
+  color: rgba(255,255,255,.82);
+}
+#final-cta .btn { margin-inline: auto; }
+#final-cta .cta-note { color: rgba(255,255,255,.6); }
+
+/* ФУТЕР */
+.site-footer { background: var(--c-bg-inverse); color: var(--c-ink-inverse); padding-block: var(--sp-7); }
+.site-footer__inner { display: grid; gap: var(--sp-4); text-align: center; }
+.site-footer__brand { display: inline-flex; align-items: center; justify-content: center; gap: var(--sp-2); font-weight: var(--fw-bold); }
+.site-footer__links { display: flex; flex-wrap: wrap; gap: var(--sp-4); justify-content: center; }
+.site-footer__links a { color: rgba(255,255,255,.75); font-size: var(--fs-small); text-decoration: underline; text-underline-offset: 2px; }
+.site-footer__links a:hover { color: var(--c-ink-inverse); }
+.site-footer__legal { color: rgba(255,255,255,.5); }
+
+/* Отступ снизу под липкую кнопку на мобайле, чтобы футер не прятался */
+@media (max-width: 47.99rem) { body { padding-bottom: 76px; } }
