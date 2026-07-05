@@ -1,0 +1,162 @@
+/* ============================================================
+   AntiTarget — БАЗА: reset + типографика + контейнеры + кнопки
+   Общее для всех страниц домена. Наследует tokens.css.
+   ============================================================ */
+
+/* ---------- RESET (лёгкий, современный) ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-base);
+  color: var(--c-ink);
+  background: var(--c-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+}
+
+img, picture, svg, video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+svg { fill: currentColor; }
+
+a { color: inherit; text-decoration: none; }
+a:not([class]) { color: var(--c-accent); text-decoration: underline; text-underline-offset: 2px; }
+a:not([class]):hover { color: var(--c-accent-hover); }
+
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; background: none; border: none; }
+
+ul, ol { list-style: none; padding: 0; }
+
+/* Уважать «уменьшить движение» */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+/* ---------- ТИПОГРАФИКА ---------- */
+h1, h2, h3 {
+  line-height: var(--lh-tight);
+  font-weight: var(--fw-bold);
+  color: var(--c-ink);
+  text-wrap: balance; /* аккуратные переносы заголовков */
+}
+h1 { font-size: var(--fs-hero); letter-spacing: -0.01em; }
+h2 { font-size: var(--fs-h2);   letter-spacing: -0.01em; }
+h3 { font-size: var(--fs-h3); font-weight: var(--fw-semibold); }
+
+p { line-height: var(--lh-base); text-wrap: pretty; }
+
+strong, b { font-weight: var(--fw-semibold); }
+
+.lead {
+  font-size: var(--fs-lead);
+  line-height: var(--lh-snug);
+  color: var(--c-ink-soft);
+}
+.text-muted { color: var(--c-ink-muted); }
+.text-small { font-size: var(--fs-small); }
+.text-micro { font-size: var(--fs-micro); }
+
+/* ---------- РАСКЛАДКА / КОНТЕЙНЕРЫ ---------- */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.container-narrow { max-width: var(--container-narrow); }
+
+.section { padding-block: var(--section-y); }
+.section--soft    { background: var(--c-bg-soft); }
+.section--inverse { background: var(--c-bg-inverse); color: var(--c-ink-inverse); }
+.section--inverse h1, .section--inverse h2, .section--inverse h3 { color: var(--c-ink-inverse); }
+
+/* Заголовок секции + подводка */
+.section-head { max-width: 44rem; margin-bottom: var(--sp-6); }
+.section-head .eyebrow {
+  display: inline-block;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-semibold);
+  color: var(--c-accent);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  margin-bottom: var(--sp-2);
+}
+.section-head p { margin-top: var(--sp-3); color: var(--c-ink-soft); font-size: var(--fs-lead); }
+
+/* ---------- КНОПКИ / CTA ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  min-height: var(--tap-min);
+  padding: var(--sp-3) var(--sp-6);
+  border-radius: var(--radius);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-semibold);
+  line-height: 1.2;
+  text-align: center;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  -webkit-tap-highlight-color: transparent;
+}
+.btn:active { transform: translateY(1px); }
+
+/* Primary = акцент Саныча, плоский (без градиента), высококонтрастный */
+.btn--primary {
+  background: var(--c-accent);
+  color: var(--c-on-accent);
+  box-shadow: var(--shadow-sm);
+}
+.btn--primary:hover  { background: var(--c-accent-hover); box-shadow: var(--shadow); }
+.btn--primary:active { background: var(--c-accent-active); }
+
+/* Large — под первый экран/финал */
+.btn--lg {
+  min-height: 56px;
+  padding: var(--sp-4) var(--sp-7);
+  font-size: var(--fs-lead);
+  border-radius: var(--radius-lg);
+}
+
+/* Blockmobile — на всю ширину на мобайле */
+.btn--block { width: 100%; }
+@media (min-width: 40rem) { .btn--auto\@sm { width: auto; } }
+
+/* Микроподпись-clarifier под кнопкой (данные: +9%) */
+.cta-note {
+  margin-top: var(--sp-3);
+  font-size: var(--fs-micro);
+  color: var(--c-ink-muted);
+  line-height: var(--lh-snug);
+}
+
+/* ---------- УТИЛИТЫ ---------- */
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid var(--c-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+.stack > * + * { margin-top: var(--sp-4); }   /* вертикальный ритм внутри блока */
+.center { text-align: center; }
+.nowrap { white-space: nowrap; }
