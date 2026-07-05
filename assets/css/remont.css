@@ -1,5 +1,5 @@
 /* ============================================================
-   /remont/ — стили секций посадочной. Наследует tokens + base.
+   /remont/ - стили секций посадочной. Наследует tokens + base.
    Дозаполняется по секциям (6.1 -> 6.9). Сейчас: шапка + hero + sticky.
    ============================================================ */
 
@@ -34,7 +34,13 @@
     radial-gradient(120% 90% at 100% 0%, var(--c-accent-soft) 0%, transparent 55%),
     var(--c-bg);
 }
-.hero__inner { max-width: 54rem; }
+
+/* было: .hero__inner { max-width: 54rem; } */
+.hero__inner {
+  max-width: 54rem;
+  margin-inline: auto;
+  text-align: center;
+}
 
 .hero__title {
   font-size: var(--fs-hero);
@@ -42,26 +48,25 @@
 }
 .hero__title-accent { color: var(--c-accent); }
 
-/* Ядро подзаголовка — крупнее (его читают 80%) */
+/* Ядро подзаголовка — крупнее, центрируем контейнер */
 .hero__lead {
   font-size: var(--fs-lead);
   font-weight: var(--fw-medium);
   line-height: var(--lh-snug);
   color: var(--c-ink);
-  margin-bottom: var(--sp-3);
+  margin: 0 auto var(--sp-3);
   max-width: 42rem;
 }
-/* Добор подзаголовка — мельче, вторичный тон (ниже линии сгиба ок) */
 .hero__lead-more {
   font-size: var(--fs-body);
   line-height: var(--lh-base);
   color: var(--c-ink-soft);
-  margin-bottom: var(--sp-6);
+  margin: 0 auto var(--sp-6);
   max-width: 40rem;
 }
 
 .hero__cta { margin-top: var(--sp-5); }
-.hero__cta .cta-note { max-width: 30rem; }
+.hero__cta .cta-note { max-width: 30rem; margin-inline: auto; }
 
 /* ---------- ЛИПКАЯ МОБИЛЬНАЯ КНОПКА ---------- */
 .sticky-cta {
@@ -76,5 +81,5 @@
   transition: transform 220ms ease;
 }
 .sticky-cta.is-visible { transform: translateY(0); }
-/* На десктопе липкая кнопка не нужна — есть CTA в шапке и по тексту */
+/* На десктопе липкая кнопка не нужна - есть CTA в шапке и по тексту */
 @media (min-width: 48rem) { .sticky-cta { display: none; } }
