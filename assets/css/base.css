@@ -126,6 +126,13 @@ strong, b { font-weight: var(--fw-semibold); }
 .btn--primary:hover  { background: var(--c-accent-hover); box-shadow: var(--shadow); }
 .btn--primary:active { background: var(--c-accent-active); }
 
+/* Кнопка внутри текстовых страниц: не поддаваться правилу .doc a */
+.doc a.btn--primary,
+.doc a.btn--primary:hover {
+  color: var(--c-on-accent);
+  text-decoration: none;
+}
+
 /* Large — под первый экран/финал */
 .btn--lg {
   min-height: 56px;
