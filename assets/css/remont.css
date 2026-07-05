@@ -207,6 +207,19 @@
 .faq-body { padding: 0 var(--sp-5) var(--sp-5); }
 .faq-body p { color: var(--c-ink-soft); font-size: var(--fs-small); }
 
+/* ТГ-сноска у CTA (не кнопка, тише микроподписи) */
+.cta-tg {
+  font-size: var(--fs-micro);
+  color: var(--c-ink-muted);
+  margin: var(--sp-2) 0 0;
+}
+.cta-tg a {
+  color: var(--c-ink-soft);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.cta-tg a:hover { color: var(--c-accent); }
+
 /* 6.9 Финальный CTA (на тёмном) */
 #final-cta .final-cta__lead {
   max-width: 40rem; margin: var(--sp-4) auto var(--sp-6);
@@ -214,6 +227,9 @@
 }
 #final-cta .btn { margin-inline: auto; }
 #final-cta .cta-note { color: rgba(255,255,255,.6); }
+.section--inverse .cta-tg { color: rgba(255,255,255,.6); }
+.section--inverse .cta-tg a { color: rgba(255,255,255,.85); }
+.section--inverse .cta-tg a:hover { color: #fff; }
 
 /* ФУТЕР */
 .site-footer { background: var(--c-bg-inverse); color: var(--c-ink-inverse); padding-block: var(--sp-7); }

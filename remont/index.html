@@ -3,15 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Заявки на ремонт не теряются между заявкой и договором - AntiTarget</title>
-  <meta name="description" content="Отвечаем вашим заказчикам сразу, отсеиваем пустые обращения, доводим горячих до замера. На выезд едут только живые заказчики с деньгами. Видно, откуда пришёл каждый заказ.">
-  <meta name="robots" content="index, follow">
+  <title>Ремонт: доводим заявки до замера, отсеиваем пустые - AntiTarget</title>
+  <meta name="description" content="Отвечаем вашим заказчикам сразу, отсеиваем пустые обращения, доводим горячих до замера. На выезд едете только к живым заказчикам с деньгами. Видно, откуда пришёл каждый заказ.">
 
-  <!-- Open Graph (минимум) -->
+  <!-- ВРЕМЕННО noindex на github.io. При переезде на antitarget.ru -> index, follow -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="canonical" href="https://antitarget.ru/remont/">
+  <meta name="theme-color" content="#c12488">
+
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AntiTarget">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:url" content="https://antitarget.ru/remont/">
   <meta property="og:title" content="Заявки на ремонт есть - а половина пустые? Наведём порядок.">
   <meta property="og:description" content="Отвечаем заказчикам сразу, отсеиваем пустые, на замер едете только к живым с деньгами.">
-  <meta property="og:locale" content="ru_RU">
+  <meta property="og:image" content="https://antitarget.ru/assets/img/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Заявки на ремонт есть - а половина пустые. Отвечаем сразу, отсеиваем пустые, довозим до замера только живых заказчиков.">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Заявки на ремонт есть - а половина пустые? Наведём порядок.">
+  <meta name="twitter:description" content="Отвечаем заказчикам сразу, отсеиваем пустые, на замер едете только к живым с деньгами.">
+  <meta name="twitter:image" content="https://antitarget.ru/assets/img/og-cover.jpg">
 
   <link rel="icon" href="../assets/logo/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="../assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
@@ -20,6 +37,25 @@
   <link rel="stylesheet" href="../assets/css/tokens.css">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/remont.css">
+
+  <!-- Schema.org: услуга -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Обработка и доведение заявок на ремонт до замера",
+    "name": "AntiTarget - доводим заявки до замера",
+    "description": "Отвечаем заказчикам сразу, отсеиваем пустые обращения, доводим горячих до замера для ремонтных бригад.",
+    "areaServed": "RU",
+    "provider": {
+      "@type": "Organization",
+      "name": "AntiTarget",
+      "url": "https://antitarget.ru/",
+      "logo": "https://antitarget.ru/assets/logo/antitarget.svg",
+      "email": "stepan-99387@yandex.ru"
+    }
+  }
+  </script>
 
   <!-- Яндекс.Метрика: код вставит Саныч (плейсхолдер) -->
   <!-- METRIKA_PLACEHOLDER -->
@@ -67,6 +103,9 @@
           </a>
           <p class="cta-note">
             ответим в&nbsp;MAX за&nbsp;пару секунд&nbsp;- сразу увидите, где утекают деньги
+          </p>
+          <p class="cta-tg">
+            Сидите в&nbsp;Telegram? <a href="#" data-tg="hero">напишите нам туда</a>
           </p>
         </div>
 
@@ -224,6 +263,13 @@
         <p class="lead final-cta__lead">Напишите нам - за пару минут покажем, на чём вы теряете заказчиков. Бесплатно, ни к чему не обязывает.</p>
         <a class="btn btn--primary btn--lg" href="#start" data-cta="final">Показать, где вы теряете заказы</a>
         <p class="cta-note">ответим в MAX за пару секунд</p>
+        <p class="cta-tg">
+          Сидите в&nbsp;Telegram? <a href="#" data-tg="hero">напишите нам туда</a>
+        </p>
+        </div>
+
+		
+		
       </div>
     </section>
 
