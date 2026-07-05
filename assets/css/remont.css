@@ -1,0 +1,80 @@
+/* ============================================================
+   /remont/ — стили секций посадочной. Наследует tokens + base.
+   Дозаполняется по секциям (6.1 -> 6.9). Сейчас: шапка + hero + sticky.
+   ============================================================ */
+
+/* ---------- ШАПКА ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: var(--z-header);
+  background: color-mix(in srgb, var(--c-bg) 88%, transparent);
+  backdrop-filter: saturate(180%) blur(8px);
+  border-bottom: 1px solid var(--c-line);
+}
+.site-header__inner {
+  display: flex; align-items: center; justify-content: space-between;
+  min-height: 60px; gap: var(--sp-4);
+}
+.site-header__wordmark {
+  font-weight: var(--fw-bold); font-size: 1.15rem; letter-spacing: -.01em;
+  color: var(--c-ink);
+}
+.site-header__wordmark::first-letter,
+.site-header__logo { color: var(--c-ink); }
+/* CTA в шапке скрыт на мобайле (есть sticky снизу), виден с планшета */
+.site-header__cta { display: none; }
+.btn--sm { min-height: 40px; padding: var(--sp-2) var(--sp-4); font-size: var(--fs-small); border-radius: var(--radius); }
+@media (min-width: 48rem) {
+  .site-header__cta { display: inline-flex; }
+}
+
+/* ---------- 6.1 ПЕРВЫЙ ЭКРАН ---------- */
+.hero {
+  padding-block: clamp(2rem, 6vw, 4.5rem);
+  background:
+    radial-gradient(120% 90% at 100% 0%, var(--c-accent-soft) 0%, transparent 55%),
+    var(--c-bg);
+}
+.hero__inner { max-width: 54rem; }
+
+.hero__title {
+  font-size: var(--fs-hero);
+  margin-bottom: var(--sp-4);
+}
+.hero__title-accent { color: var(--c-accent); }
+
+/* Ядро подзаголовка — крупнее (его читают 80%) */
+.hero__lead {
+  font-size: var(--fs-lead);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-snug);
+  color: var(--c-ink);
+  margin-bottom: var(--sp-3);
+  max-width: 42rem;
+}
+/* Добор подзаголовка — мельче, вторичный тон (ниже линии сгиба ок) */
+.hero__lead-more {
+  font-size: var(--fs-body);
+  line-height: var(--lh-base);
+  color: var(--c-ink-soft);
+  margin-bottom: var(--sp-6);
+  max-width: 40rem;
+}
+
+.hero__cta { margin-top: var(--sp-5); }
+.hero__cta .cta-note { max-width: 30rem; }
+
+/* ---------- ЛИПКАЯ МОБИЛЬНАЯ КНОПКА ---------- */
+.sticky-cta {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: var(--z-sticky);
+  padding: var(--sp-3) var(--gutter);
+  padding-bottom: calc(var(--sp-3) + env(safe-area-inset-bottom));
+  background: color-mix(in srgb, var(--c-bg) 92%, transparent);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid var(--c-line);
+  box-shadow: 0 -4px 16px rgba(27,30,36,.06);
+  transform: translateY(110%);
+  transition: transform 220ms ease;
+}
+.sticky-cta.is-visible { transform: translateY(0); }
+/* На десктопе липкая кнопка не нужна — есть CTA в шапке и по тексту */
+@media (min-width: 48rem) { .sticky-cta { display: none; } }
