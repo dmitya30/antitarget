@@ -20,11 +20,18 @@
 }
 .site-header__wordmark::first-letter,
 .site-header__logo { color: var(--c-ink); }
-/* CTA в шапке скрыт на мобайле (есть sticky снизу), виден с планшета */
-.site-header__cta { display: none; }
+
+/* CTA в шапке виден ВЕЗДЕ; текст переключается по ширине */
+.site-header__cta { display: inline-flex; }
 .btn--sm { min-height: 40px; padding: var(--sp-2) var(--sp-4); font-size: var(--fs-small); border-radius: var(--radius); }
+
+/* по умолчанию (мобайл) — короткий текст */
+.cta-text-full  { display: none; }
+.cta-text-short { display: inline; }
+
 @media (min-width: 48rem) {
-  .site-header__cta { display: inline-flex; }
+  .cta-text-full  { display: inline; }
+  .cta-text-short { display: none; }
 }
 
 /* ---------- 6.1 ПЕРВЫЙ ЭКРАН ---------- */
