@@ -1,6 +1,4 @@
-# ВРЕМЕННО: dev на github.io закрыт от индексации.
-# При переезде на antitarget.ru заменить на разрешающий (см. журнал).
 User-agent: *
-Disallow: /
+Allow: /
 
 Sitemap: https://antitarget.ru/sitemap.xml
