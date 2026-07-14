@@ -4,7 +4,7 @@
 
   /* ---- Боты: базовые ссылки + start-параметр (payload = место клика) ---- */
   var MAX_BOT = "https://max.ru/id330573539826_bot?start=";
-  var TG_BOT  = "https://t.me/antitarget_rembot?start=";
+  var TG_BOT  = "https://telegram.me/antitarget_rembot?start=";
 
   /* ---- Payload места (data-cta / data-tg -> метка) ---- */
   var PAYLOAD = {
